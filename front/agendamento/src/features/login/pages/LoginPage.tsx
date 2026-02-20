@@ -1,6 +1,15 @@
+import { useEffect } from "react";
 import { LoginForm } from "../components/form-login";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) navigate("/home/listar-agendamento", { replace: true });
+  }, [navigate]);
+
   return (
     <div
       className="relative flex min-h-svh flex-col items-center justify-center p-6 md:p-10 bg-cover bg-center"

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Navigate } from "react-router-dom";
-import type { JSX } from "react";
+import { Navigate, Outlet } from "react-router-dom";
 
 const isTokenValid = (): boolean => {
   const token = localStorage.getItem("token");
@@ -13,12 +12,8 @@ const isTokenValid = (): boolean => {
   }
 };
 
-interface PrivateRouteProps {
-  children: JSX.Element;
-}
-
-const PrivateRoute = ({ children }: PrivateRouteProps) => {
-  return isTokenValid() ? children : <Navigate to="/login" replace />;
+const PrivateRoute = () => {
+  return isTokenValid() ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default PrivateRoute;
