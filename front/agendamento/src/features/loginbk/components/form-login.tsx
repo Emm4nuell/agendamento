@@ -50,7 +50,7 @@ export function LoginForm({
 
       localStorage.setItem("token", token);
       await autenticacaoService.autenticacao();
-      navigate("/opcao-agendamento", { replace: true });
+      navigate("/home/listar-agendamento", { replace: true });
     } catch (error) {
       const status = (error as { response?: { status?: number } })?.response
         ?.status;
@@ -73,25 +73,25 @@ export function LoginForm({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-white/70 bg-white/88 p-[clamp(1.25rem,3vw,2rem)] shadow-[0_30px_80px_rgba(2,78,74,0.18)] backdrop-blur-xl",
+        "rounded-2xl border border-white/70 bg-white/88 p-6 shadow-[0_30px_80px_rgba(2,78,74,0.18)] backdrop-blur-xl sm:p-8",
         className,
       )}
       {...props}
     >
-      <div className="mb-[clamp(1.25rem,3vh,2rem)]">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#00985d] sm:text-sm">
+      <div className="mb-8">
+        <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#00985d]">
           Acesso restrito
         </p>
-        <h2 className="mt-2 text-[clamp(1.65rem,4vw,2rem)] font-semibold leading-tight text-[#024e4a]">
+        <h2 className="mt-3 text-3xl font-semibold leading-tight text-[#024e4a]">
           Bem-vindo de volta
         </h2>
-        <FieldDescription className="mt-2 text-sm text-[#557b75] sm:text-base">
+        <FieldDescription className="mt-3 text-[#557b75]">
           Entre com suas credenciais para continuar no painel de agendamentos.
         </FieldDescription>
       </div>
 
       <form className="relative z-20" onSubmit={handleSubmit}>
-        <FieldGroup className="gap-[clamp(1rem,2.4vh,1.25rem)]">
+        <FieldGroup className="gap-5">
           <Field>
             <FieldLabel htmlFor="login" className="text-[#024e4a]">
               Usuário
@@ -100,7 +100,7 @@ export function LoginForm({
               <UserRound className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-[#00985d]" />
               <Input
                 id="login"
-                className="h-11 rounded-xl border-[#c5ddd4] bg-[#f8fcfa] pl-11 text-[#024e4a] shadow-none placeholder:text-[#8aaaa2] focus-visible:border-[#00985d] focus-visible:ring-[#00985d]/20 sm:h-12"
+                className="h-12 rounded-xl border-[#c5ddd4] bg-[#f8fcfa] pl-11 text-[#024e4a] shadow-none placeholder:text-[#8aaaa2] focus-visible:border-[#00985d] focus-visible:ring-[#00985d]/20"
                 type="text"
                 name="login"
                 placeholder="Informe seu usuário"
@@ -121,7 +121,7 @@ export function LoginForm({
               <LockKeyhole className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-[#00985d]" />
               <Input
                 id="senha"
-                className="h-11 rounded-xl border-[#c5ddd4] bg-[#f8fcfa] px-11 text-[#024e4a] shadow-none placeholder:text-[#8aaaa2] focus-visible:border-[#00985d] focus-visible:ring-[#00985d]/20 sm:h-12"
+                className="h-12 rounded-xl border-[#c5ddd4] bg-[#f8fcfa] px-11 text-[#024e4a] shadow-none placeholder:text-[#8aaaa2] focus-visible:border-[#00985d] focus-visible:ring-[#00985d]/20"
                 type={showPassword ? "text" : "password"}
                 name="senha"
                 placeholder="Informe sua senha"
@@ -164,7 +164,7 @@ export function LoginForm({
 
           <Button
             type="submit"
-            className="h-11 w-full cursor-pointer rounded-xl bg-[#00985d] text-base font-semibold shadow-[0_14px_30px_rgba(0,152,93,0.28)] transition hover:bg-[#087f51] disabled:shadow-none sm:h-12"
+            className="h-12 w-full cursor-pointer rounded-xl bg-[#00985d] text-base font-semibold shadow-[0_14px_30px_rgba(0,152,93,0.28)] transition hover:bg-[#087f51] disabled:shadow-none"
             disabled={isSubmitting}
           >
             {isSubmitting ? (

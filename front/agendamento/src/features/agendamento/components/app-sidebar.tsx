@@ -56,6 +56,10 @@ const data = {
       isActive: true,
       items: [
         {
+          title: "Opcoes de agendamento",
+          url: "/opcao-agendamento",
+        },
+        {
           title: "Médico Referência",
           url: "consulta",
         },

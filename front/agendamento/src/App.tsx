@@ -4,6 +4,7 @@ import LoginPage from "./features/login/pages/LoginPage";
 import ListarAgendamento from "./features/agendamento/components/listar-agendamento";
 import PrivateRoute from "./features/security/PrivateRouter";
 import FormConsulta from "./features/agendamento/components/consulta";
+import OpcaoAgendamentoPage from "./features/opcaoagendamento/pages/OpcaoAgendamentoPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="login" element={<LoginPage />} />
         <Route element={<PrivateRoute />}>
+          <Route path="opcao-agendamento" element={<OpcaoAgendamentoPage />} />
           <Route path="home" element={<AgendamentoPage />}>
             <Route
               index

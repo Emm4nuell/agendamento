@@ -5,6 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --bg-color: #E5F3ED;
+  --text-primary-color: #024E4A;
+  --text-secondary-color: #00985D;
+  --button-color-secondary: #069A5C;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;

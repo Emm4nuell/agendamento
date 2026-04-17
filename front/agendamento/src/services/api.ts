@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://192.168.0.189:8080/v1",
+  baseURL: "http://localhost:8083",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
@@ -28,12 +28,11 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem("token");
-      window.location.href = "/login";
+      //window.location.href = "/login";
     } else if (error.response?.status === 403) {
       localStorage.removeItem("token");
-      window.location.href = "/login";
+      //window.location.href = "/login";
     }
-
     return Promise.reject(error);
   },
 );
