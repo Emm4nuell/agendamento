@@ -24,6 +24,7 @@ import {
   ClipboardList,
   Globe2,
   IdCard,
+  LogOut,
   MapPin,
   Search,
   Stethoscope,
@@ -139,6 +140,12 @@ export default function OpcaoAgendamentoPage() {
     setPesquisa(beneficiario.nome);
   };
 
+  const sair = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("carteiraSelecionada");
+    navigate("/login", { replace: true });
+  };
+
   const continuarAgendamento = () => {
     if (!carteira.trim()) {
       return;
@@ -166,6 +173,14 @@ export default function OpcaoAgendamentoPage() {
                 iniciar o fluxo com a carteira correta.
               </p>
             </div>
+            <Button
+              variant="outline"
+              className="w-full gap-2 border-[#d7ebe3] text-[#024e4a] hover:bg-[#e5f3ed] md:w-auto"
+              onClick={sair}
+            >
+              <LogOut className="size-4" />
+              Sair
+            </Button>
           </div>
         </section>
 

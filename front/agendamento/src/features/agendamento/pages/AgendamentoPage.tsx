@@ -14,14 +14,24 @@ import {
 import { AppSidebar } from "../components/app-sidebar";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Outlet } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { LogOut } from "lucide-react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function AgendamentoPage() {
+  const navigate = useNavigate();
+
+  const sair = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("carteiraSelecionada");
+    navigate("/login", { replace: true });
+  };
+
   return (
     <SidebarProvider className="z-0 relative">
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+        <header className="flex h-16 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator
@@ -48,6 +58,15 @@ export default function AgendamentoPage() {
               </BreadcrumbList>
             </Breadcrumb>
           </div>
+          <Button
+            variant="outline"
+            size="sm"
+            className="mr-4 gap-2"
+            onClick={sair}
+          >
+            <LogOut className="size-4" />
+            Sair
+          </Button>
         </header>
         <div className="flex justify-center">
           <Outlet />
